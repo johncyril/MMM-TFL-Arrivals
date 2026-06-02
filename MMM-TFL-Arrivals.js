@@ -81,6 +81,8 @@ Module.register("MMM-TFL-Arrivals", {
         apiKey: this.config.ldbws_key
       });
     }
+
+    this.scheduleUpdate();
   },
 
   // ----- UI COMPONENTS -----
@@ -379,12 +381,10 @@ if (payload.instanceId !== this.identifier) return; // ignore others
 
     if (notification === "TFL_ARRIVALS_DATA") {
       this.processTfl(payload.data, payload.error);
-      this.scheduleUpdate();
     }
 
     if (notification === "NR_ARRIVALS_DATA") {
       this.processNr(payload.data, payload.error);
-      this.scheduleUpdate();
     }
   }
 });
